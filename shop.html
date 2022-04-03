@@ -1,0 +1,1156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <title>Shop</title>
+  <script src="https://kit.fontawesome.com/24c494a6b6.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      font-family: ProximaNovaA-Regular;
+    }
+
+    .imgslide {
+      overflow: hidden;
+      margin: auto;
+      width: 1200px;
+      /* margin-left: 3%; */
+      margin-top: 20px;
+      /* border: 1px solid red; */
+    }
+
+    /* @-webkit-keyframes slide_animation {
+      0% {
+        left: 0px;
+      }
+
+      10% {
+        left: 0%;
+      }
+
+      20% {
+        left: -100%;
+      }
+
+      30% {
+        left: -100%;
+      }
+
+      40% {
+        left: -200%;
+      }
+
+      50% {
+        left: -200%;
+      }
+
+      60% {
+        left: -300%;
+      }
+
+      70% {
+        left: -300%;
+      }
+
+      80% {
+        left: -400%;
+      }
+
+      90% {
+        left: -400%;
+      }
+
+      100% {
+        left: 0%;
+      }
+    } */
+
+    /* .imgframe {
+      display: flex;
+      width: 3600px;
+      height: auto;
+      margin: auto;
+      position: relative;
+      -webkit-animation-name: slide_animation;
+      -webkit-animation-duration: 33s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-direction: alternate;
+      -webkit-animation-play-state: running;
+    } */
+
+    .imgcontainer {
+      height: auto;
+      width: auto;
+      position: relative;
+      float: left;
+    }
+
+    #bigcontainer {
+      height: auto;
+      width: auto;
+      /* border: 1px solid black; */
+      display: flex;
+    }
+
+    #left {
+      height: 700px;
+      width: 300px;
+      /* border: 1px solid red; */
+      margin-top: 40px;
+      /* margin-left: 30px; */
+      border-right: 1px solid grey;
+      padding: 15px;
+
+    }
+
+    #smallcontainer {
+      height: auto;
+      /* width: 1100px; */
+      width: 100%;
+      /* border: 1px solid red; */
+      /* margin-right: 30px; */
+      padding: 10px;
+    }
+
+    #box {
+      height: auto;
+      width: 100%;
+      /* border: 1px solid blue; */
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #pdtbox {
+      height: auto;
+      width: 100%;
+      /* border: 1px solid black; */
+      display: grid;
+      /* padding: 10px; */
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    #pdtbox>div {
+      /* border: 1px solid black; */
+      padding: 10px;
+      /* margin: 10px; */
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    .offer>p {
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      height: 20px;
+      width: 100%;
+      color: #ba5253;
+      padding: auto 20px;
+      text-align: right;
+    }
+
+    #but {
+      margin-left: 20px;
+      border: none;
+      background-color: #fadc7a;
+      border-radius: 3px;
+    }
+
+    /* b {
+      border: 1px solid red;
+    } */
+  </style>
+</head>
+
+<body>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="d-sm-none d-md-block col-md-5">
+
+        </div>
+        <div class="col-5 text-end d-sm-none d-md-block col-md-7">
+          <samp class="bi bi-telephone">1860 123 1000</samp>
+          <samp class="bi bi-geo-alt m-2" id="top-address">Address</samp>
+          <samp class="bi bi-person m-1"> <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+              id="top-name" onclick="check_login()">Login/Sign Up</a> </samp>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <!-- Modal for login-->
+    <div id="login-check-pop">
+      <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">LOGIN OR SIGN UP</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+              <div class="">
+
+                <p class="text-center">
+                  <a class="btn border btn-primary" data-bs-toggle="collapse" href="#log-in" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    LOG IN
+                  </a>
+                  <span> OR </span>
+                  <a class="btn border btn-primary" data-bs-toggle="collapse" href="#sign-up" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    SIGN UP
+                  </a>
+                </p>
+                <div class="collapse" id="log-in">
+                  <div class="card card-body m-5">
+                    <div id="form-login">
+                      <div class="mb-3">
+                        <label for="Input_Email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="Input_Email" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="InputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="InputPassword">
+                      </div>
+                      <button id="btn-login" class="btn btn-primary">SIGN IN</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="collapse" id="sign-up">
+                  <div class="card card-body m-5">
+                    <div id="form-signup">
+                      <div class="mb-3">
+                        <label for="Input1" class="form-label">Enter Name</label>
+                        <input type="text" class="form-control" id="Input1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your name with anyone else.</div>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="city" class="form-label">Your city</label>
+                        <input type="email" class="form-control" id="city" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="Input2" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="Input2" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="InputP1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="InputP1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="InputP2" class="form-label">Conform Password</label>
+                        <input type="password" class="form-control" id="InputP2">
+                      </div>
+                      <button id="btn-signup" class="btn btn-primary">SIGN IN</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal for Address-->
+    <!-- <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      
+        <select name="" id="" style="width: 100%; height: 35px;">
+            <option value="">Select your city</option>
+            <option value="">Pune</option>
+            <option value="">Mumbai</option>
+            <option value="">Ahmednagar</option>
+            <option value="">Satara</option>
+            <option value="">Nashik</option>
+        </select>
+
+        <div class="input-group mb-3 my-3">
+            <input type="text" class="form-control" placeholder="Enter your area / apprtment / pincode" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          </div>
+          <div class="d-grid gap-2 col-12 mx-auto">
+            <button class="btn btn-success" type="button">Continue</button>
+          </div>
+    </div>
+  </div>
+</div>
+</div> -->
+
+  </section>
+
+  <!-- Header-3 -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-xl-3 col-md-3 col-sm-12">
+          <a href="index.html">
+            <img style="height: 70px; margin-top: -10px;"
+              src="https://www.bbassets.com/static/v2530/custPage/build/content/img/bb_logo.png" alt="" srcset="">
+          </a>
+        </div>
+        <div class="col-lg-7 col-xl-7 col-md-6 col-sm-12">
+          <input class="form-control w-75 mt-3" style="float: left;" type="text">
+          <button class="search-btn bg-success mt-3" style="height: 38px; width: 38px; border: 0;"><i
+              class="bi bi-search"></i></button>
+        </div>
+        <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+          <a href="cart.html">
+            <div class="cart-icon">
+              <div><i id="cart-img" class="bi bi-basket"></i></div>
+              <div id="cart-count"><span id="basket">My Basket</span><br><span id="item-count"> </span> items</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="container">
+      <!-- <hr id="menu-sepreter"> -->
+      <div class="row border">
+        <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12 dropdown bg-success">
+          <div class="dropdown">
+            <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              SHOP BY CATEGORY
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#" onclick="Fruits()">Fruits & Vegetables</a></li>
+              <li><a class="dropdown-item" href="#" onclick="Food()">Foodgrains, Oil & Masala</a></li>
+              <li><a class="dropdown-item" href="#" onclick="Bakery()">Bakery, Cakes & Dairy</a></li>
+              <li><a class="dropdown-item" href="#" onclick="Beverages()">Beverages</a></li>
+              <!-- <li><a class="dropdown-item" href="#" onclick="Snacks()">Snacks & Branded Foods</a></li> -->
+              <!-- <li><a class="dropdown-item" href="#" onclick="Beauty()">Beauty & Hygiene</a></li> -->
+              <li><a class="dropdown-item" href="#" onclick="Cleaning()">Cleaning & Household</a></li>
+              <li><a class="dropdown-item" href="#" onclick="Kitchen()">Kitchen, Garden & Pets</a></li>
+              <li><a class="dropdown-item" href="#" onclick="Eggs()">Eggs, Meat & Fish</a></li>
+              <li><a class="dropdown-item" href="#" onclick="Gourmet()">Gourmet & World Food</a></li>
+              <!-- <li><a class="dropdown-item" href="#" onclick="Baby()">Baby Care</a></li> -->
+              <!-- <li><a class="dropdown-item" href="#" onclick="F_V">View All</a></li> -->
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12">
+          <b class="bi bi-tag-fill">OFFERS</b>
+        </div>
+        <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12">
+          <b class="bi bi-shop"> BB SPECIALTY</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+  <!-- <div class="imgslide">
+        <div class="imgframe">
+            <div class="imgcontainer">
+                <img src="https://www.bigbasket.com/media/uploads/banner_images/L1_CXNP6687_stationery_1200x300_061221.jpg" alt="">
+            </div>
+            <div class="imgcontainer">
+                <img src="https://www.bigbasket.com/media/uploads/banner_images/cxtt5398_l1_nippo_300_250322.jpg" alt="">
+            </div>
+            <div class="imgcontainer">
+                <img src="https://www.bigbasket.com/media/uploads/banner_images/cxtt5405_l1_philips_300_250322.jpg" alt="">
+            </div>
+            <div class="imgcontainer">
+                <img src="https://www.bigbasket.com/media/uploads/banner_images/L1_CXNP6693_loofa_1200x300_061221.jpg" alt="">
+            </div>
+            <div class="imgcontainer">
+                <img src="https://www.bigbasket.com/media/uploads/banner_images/L1_CXNP6689_bbexclusive_1200x300_061221.jpg" alt="">
+            </div>
+            <div class="imgcontainer">
+                <img src="https://www.bigbasket.com/media/uploads/banner_images/L1_CXNP6688_festive_needs_1200x300_061221.jpg" alt="">
+            </div>
+        </div>
+    </div> -->
+  <!-- Carousel Menu -->
+  <section>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://www.bigbasket.com/media/uploads/banner_images/HP_EMF_M_Weekdayblore_460_290322.jpeg"
+            class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://www.bigbasket.com/media/uploads/banner_images/hp_f_v_m_ugadi_460-250322.jpg"
+            class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://www.bigbasket.com/media/uploads/banner_images/hp_b_h_m_Dairy(MilkShake)_460-250322.jpg"
+            class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://www.bigbasket.com/media/uploads/banner_images/hp_m_Happychef_460-250322.jpg"
+            class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://www.bigbasket.com/media/uploads/banner_images/hp_m_Pantryessentials_460-250322.jpg"
+            class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://www.bigbasket.com/media/uploads/banner_images/hp_m_TheBigGlasswareMela!_460-250322.jpg"
+            class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://www.bigbasket.com/media/uploads/banner_images/hp_m_Deodorants_460-250322.jpg"
+            class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+  </section>
+
+
+
+
+  <div class="container b">
+
+    <div id="bigcontainer">
+      <div id="left" class="sticky-lg-top">
+        <h3 style="cursor: pointer;">Category</h3>
+        <hr align="left">
+        <!-- <p>Fruits & Vegetables</p> -->
+        <p id="side">Fruits & Vegetables</p>
+        <p id="side">Foodgrains, Oil & Masala</p>
+        <p id="side">Bakery, Cakes & Dairy</p>
+        <p id="side">Beverages</p>
+        <p id="side">Cleaning & Household</p>
+        <p id="side">Kitchen, Garden & Pets</p>
+        <p id="side">Eggs, Meat & Fish</p>
+        <p id="side">Gourmet & World Food</p>
+
+        <h3> Brand</h3>
+        <hr align="left">
+        <div>
+          <input type="checkbox" value="BB Home" class="theClass" onclick="funclick1()" /> BB Home <br>
+          <input type="checkbox" value="Tide" class="theClass" onclick="funclick2()" /> Tide<br>
+          <input type="checkbox" value="Arial" class="theClass" onclick="funclick3()" /> Arial<br>
+          <input type="checkbox" value="Comfort" class="theClass" onclick="funclick4()" /> Comfort<br>
+        </div>
+        <br>
+        <h3> Price </h3>
+        <hr align="left">
+        <div>
+          <input type="checkbox" value="less100" class="theClass" onclick="funprice1()" /> less than Rs.100 <br>
+          <input type="checkbox" value="100to200" class="theClass" onclick="funprice2()" /> Rs.100 to Rs.200<br>
+          <input type="checkbox" value="upto500" class="theClass" onclick="funprice3()" /> upto Rs 500<br>
+          <input type="checkbox" value="less1000" class="theClass" onclick="funprice4()" /> greter than Rs.1000<br>
+        </div>
+      </div>
+      <div id="smallcontainer">
+        <div id="box">
+          <h2>All Product</h2>
+          <select id="sortby" style="height: 30px; margin-top: 20px;">
+            <option value="">Select Sort</option>
+            <option value="pop">Popularity</option>
+            <option value="asc">Price-Low to High</option>
+            <option value="dsc">Price-High to Low</option>
+            <option value="alpha">Alphabetical</option>
+          </select>
+        </div>
+        <div style="cursor: pointer; font-size: 20px;"><i class="fa-solid fa-truck m-1"
+            style="color: #84c225;"></i><u>All Products</u> </div>
+        <hr>
+        <div id="pdtbox">
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- Footer-1 -->
+  <section>
+    <div class="container my-5">
+      <div class="container">
+        <div class="row">
+          <div class="col text_color">
+            Bigbasket<br>
+            <a href="aboutus.html">About Us</a><br>
+            <a href="aboutus.html">In News</a><br>
+            <a href="aboutus.html">Green bigbasket</a><br>
+            <a href="aboutus.html">Privacy Policy</a><br>
+            <a href="aboutus.html">Affiliate</a><br>
+            <a href="aboutus.html">Terms and Conditions</a><br>
+            <a href="aboutus.html">Careers At bigbasket</a><br>
+            <a href="aboutus.html">bb Instant</a><br>
+            <a href="aboutus.html">bb Daily</a><br>
+            <a href="aboutus.html">bb Blog</a><br>
+            <a href="aboutus.html">bbnow</a>
+          </div>
+          <div class="col text_color">
+            Help<br>
+            <a href="aboutus.html">FAQs</a><br>
+            <a href="aboutus.html">Contact Us</a><br>
+            <a href="aboutus.html">bb Wallet FAQs</a><br>
+            <a href="aboutus.html">bb Wallet T&Cs</a><br>
+            <a href="aboutus.html">Vendor Connect</a><br>
+          </div>
+          <div class="col text_color">
+            <p>Download Our App</p>
+            <img src="https://www.bbassets.com/static/v2530/custPage/build/content/img/Google-App-store-icon.png"
+              alt="">
+            <img src="https://www.bbassets.com/static/v2530/custPage/build/content/img/Apple-App-store-icon.png" alt="">
+          </div>
+          <div class="col">
+            <p class="text_color">Get Social With Us</p>
+            <i class="bi bi-facebook Footer-1-icon"></i>
+            <i class="bi bi-instagram Footer-1-icon"></i>
+            <i class="bi bi-pinterest Footer-1-icon"></i>
+            <i class="bi bi-twitter Footer-1-icon"></i>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </section>
+
+  <!-- Footer-2 -->
+  <section>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-2">
+          <p class="text_color">POPULAR CATEGORIES:</p>
+        </div>
+        <div class="col-10 text_small">
+          Sunflower Oils, Wheat Atta, Ghee, Milk, Health Drinks, Flakes, Organic F&V, Namkeen, Eggs, Floor Cleaners,
+          Other Juices, Leafy Vegetables, Frozen Veg Food, Diapers & Wipes,
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <p class="text_color">POPULAR BRANDS:</p>
+        </div>
+        <div class="col-10 text_small">
+          Amul, Nescafe , MTR, Red Bull, elite cake, Pediasure, Yummiez, Yera, Yakult, Britannia, Wow Momo, Fortune ,
+          Haldirams , Ferrero, Lays, Patanjali, McCain, kwality walls, Cadbury Dairy Milk, Pedigree, </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <p class="text_color">CITIES WE SERVE:</p>
+        </div>
+        <div class="col-10 text_small">
+          Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Mysore, Madurai, Coimbatore, Vijayawada-Guntur, Kolkata,
+          Ahmedabad-Gandhinagar, Nashik, Lucknow-Kanpur, Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore,
+          Chandigarh Tricity, Jaipur, Bhopal, Noida-Ghaziabad, Kochi, Krishna District, Bhubaneshwar-Cuttack, Guwahati,
+          Renigunta, Hubli, Davanagere, Trichy, Amaravathi, Raipur, Rajkot, Gwalior, Bareilly, Allahabad, Hyderabad
+          Rural, Bangalore Rural, Chennai Rural, Vizag Rural, Lucknow Rural, Noida Rural, Ahmedabad Rural, Bhopal Rural,
+          Bhubaneswar Rural, Coimbatore Rural, Chandigarh Rural, Gurugram Rural, Guwahati Rural, Indore Rural, Kochi
+          Rural, Kolkata Rural, Mumbai Rural, Mysore Rural, Nagpur Rural, Patna Rural, Pune Rural, Surat Rural, Vadodara
+          Rural, Jaipur Rural,
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <p class="text_color">PAYMENT OPTIONS:</p>
+        </div>
+        <div class="col-10">
+          CASH ON DELIVERY
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer-3 -->
+  <section class="bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <small>
+            Copyright © 2021-2023 Supermarket Grocery Supplies Pvt Ltd
+          </small>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- <h1>Hello, world!</h1> -->
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  <script src="index.js"></script>
+</body>
+
+</html>
+<script>
+  // var data=[
+  //    {off:"Get 10% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/s/1207190_6-harpic-original-disinfectant-toilet-cleaner-liquid.jpg",
+  //      proName:"Harpic",
+  //      detail:"Disinfectant Toilet Cleaner Liquid,Orininal",
+  //      rate:4.2,
+  //      select:"500ml, Rs.88.00",
+  //      price:524.01,
+  //      strike:"Rs.535",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //    },
+  //    {off:"Get 22% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/s/1207311_7-surf-excel-matic-liquid-detergent-front-load.jpg",
+  //      proName:"Surf Excel",
+  //      detail:"Matic Liquid Detergent - Front Load",
+  //      rate:4.3,
+  //      select:"2L Pouch, Rs.346.00",
+  //      price:692,
+  //      strike:"Rs.899",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //    },
+  //    {off:"Get 14% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/s/1207195_4-lizol-disinfectant-floor-cleaner-liquid-citrus-kills-999-germs.jpg",
+  //      proName:"Lizol",
+  //      detail:"Disinfectant Surface & Floor Cleaner Liquid, Citrus",
+  //      rate:4.4,
+  //      select:"2 L, Rs.300.00",
+  //      price:525.01,
+  //      strike:"Rs.615",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //    },
+  //    {off:"Get 13% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/s/306160_21-vim-dishwash-bar-lemon.jpg",
+  //      proName:"Vim",
+  //      detail:"Dishwash Bar - Lemon",
+  //      rate:4.5,
+  //      select:"300 g Wrapper -Rs.25.25",
+  //      price:45.43,
+  //      strike:"Rs.52",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //    },
+  //    {off:"Get 5% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/s/40137710_10-bb-home-oxo-biodegradable-garbage-bag-medium-blue.jpg",
+  //      proName:"BB Home",
+  //      detail:"Oxo-Biodegradable Garbage Bags - Medium, Blue",
+  //      rate:4.2,
+  //      select:"1 Pc Rs 61.75",
+  //      price:61.75,
+  //      strike:"Rs.65",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //    },
+  //    {off:"Get 20% off ✹",
+  //     image_url:"https://www.bigbasket.com/media/uploads/p/s/1204352_1-fresho-sandwich-bread-white-chemical-free-400g-eggs-regular-6pcs.jpg",
+  //     proName:"Fresho",
+  //     detail:"Bread - Whole Wheat, Chemical Free 400G + Eggs - Regular 6pcs",
+  //     rate:3.9,
+  //     select:"combo 2 items",
+  //     price:73.00,
+  //     strike:"Rs.89",
+  //     common:"Standard Delivery:Tomorrow 8:00AM-12:30PM",
+  //    },
+  //    {off:"Get 11% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/s/1201635_8-harpic-disinfectant-bathroom-cleaner-liquid-lemon.jpg",
+  //      proName:"Harpic",
+  //      detail:"Disinfectant Bathroom Cleaner Liquid, Lemon",
+  //      rate:4.2,
+  //      select:"500ml, Rs.175.76",
+  //      price:175.76,
+  //      strike:"Rs.198",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //    },
+  //    {off:"Get 20% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/s/230745_18-comfort-after-wash-morning-fresh-fabric-conditioner.jpg",
+  //      proName:"Comfort",
+  //      detail:"After Wash Morning Fresh Fabric Conditioner",
+  //      rate:4.8,
+  //      select:"500ml, Rs.188.00",
+  //      price:188,
+  //      strike:"Rs.225",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //    },
+  //    {off:"save Rs.33 ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/s/40211319_1-ariel-matic-liquid-detergent-front-load.jpg",
+  //      proName:"Ariel",
+  //      detail:"Matic Liquid Detergent - Front Load",
+  //      rate:4.3,
+  //      select:"2Kg  Rs.381.00",
+  //      price:381,
+  //      strike:"Rs.415",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //    },
+  //    {off:"Get 18% off ✹",
+  //     image_url:"https://www.bigbasket.com/media/uploads/p/mm/285250_16-comfort-after-wash-anti-bacterial-fabric-conditioner.jpg",
+  //     proName:"Comfort",
+  //     detail:"After Wash Anti Bacterial Fabric Conditioner",
+  //     rate:4.3,
+  //     select:"860ml-Rs192",
+  //     price:192,
+  //     strike:"Rs.235",
+  //     common:"Standard Delivery:Tomorrow 8:00AM-12:30PM",
+  //    },
+  //    {off:"Get 18% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/s/40106413_9-ariel-matic-front-load-detergent-washing-powder.jpg",
+  //      proName:"Arial",
+  //      detail:"Matic Front Load Detergent Washing Powder",
+  //      rate:4.6,
+  //      select:"5kg , Rs.1027.00",
+  //      price:1027,
+  //      strike:"Rs.1250",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //    },
+  //    {off:"Get 11% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/mm/264009_13-tide-plus-detergent-washing-powder-extra-power-jasmine-rose.jpg",
+  //      proName:"Tide",
+  //      detail:"Plus Detergent Washing Powder - Extra Power Jasmine & Rose",
+  //      rate:4.5,
+  //      select:"1kg, Rs.88.00",
+  //      price:118,
+  //      strike:"Rs.132",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //    },
+  //    {off:"Get 11% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/mm/40175061_10-bb-home-premium-soft-grass-broomphool-jhadu.jpg",
+  //      proName:"BB Home",
+  //      detail:"Premium Soft Grass Broom/Phool Jhadu",
+  //      rate:4.4,
+  //      select:"1 Pc Rs.225",
+  //      price:225,
+  //      strike:"Rs.500",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //     },
+  //     {off:"Get 46% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/mm/40172986_12-bb-home-spin-mop-bucket-360-degree-with-2-refills.jpg",
+  //      proName:"BB Home",
+  //      detail:"Spin Mop Bucket With 360 Degree Rotation & 2 Refills - Used For Deep Cleaning, Blue",
+  //      rate:4.2,
+  //      select:"1 pc Rs.699",
+  //      price:699,
+  //      strike:"Rs.1200",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //     },
+  //     {off:"Get 15% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/mm/1214683_1-ariel-detergent-washing-powder-matic-front-load-2kg-matic-3-in-1-pods-detergent-357g.jpg",
+  //      proName:"Ariel",
+  //      detail:"Detergent Washing Powder-Matic Front Load 2kg + Matic 3-in-1 PODs Detergent 357g",
+  //      rate:4,
+  //      select:"1 Kg, Rs.88.00",
+  //      price:843.11,
+  //      strike:"Rs.991",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //     },
+  //     {off:"Get 46% off ✹",
+  //      image_url:"https://www.bigbasket.com/media/uploads/p/mm/2000047_4-tide-naturals-detergent-powder-lemon-chandan.jpg",
+  //      proName:"Tide",
+  //      detail:"Naturals Detergent Powder - Lemon & Chandan",
+  //      rate:4.3,
+  //      select:"500 g-Rs 35.15",
+  //      price:35.15,
+  //      strike:"Rs.37",
+  //      common:"Standard Delivery:Today 3:00PM-7:30PM",
+  //     },
+  //    ];
+
+  var data = JSON.parse(localStorage.getItem("shop_data")) || []
+
+  //  var datafromlocal=JSON.parse(localStorage.getItem("cleaning-housing"))||[];
+  displayData(data);
+  function displayData(data) {
+    document.querySelector("#pdtbox").innerHTML = "";
+    data.map(function (ele) {
+      var div = document.createElement("div");
+
+
+      var div2 = document.createElement("div");
+      var off = document.createElement("p");
+      off.innerText = ele.off;
+      div2.setAttribute("class", "offer");
+      div2.append(off);
+
+      var image = document.createElement("img");
+      image.src = ele.image_url;
+      image.style.width = "100%"
+      image.style.cursor = "pointer";
+      image.addEventListener("click", function () {
+        myimgfun(ele);
+      });
+
+      var div4 = document.createElement("div");
+      var pro = document.createElement("p");
+      pro.innerText = ele.proName;
+      pro.style.fontSize = "12px";
+      pro.style.color = "grey"
+      var name = document.createElement("p");
+      name.innerText = ele.detail;
+      name.style.margin = "-12px auto -2px auto"
+      var rate = document.createElement("button");
+      rate.innerText = `${ele.rate}★`;
+      rate.style.border = "none";
+      rate.style.color = "#84c225"
+      rate.style.fontWeight = "bold"
+      div4.append(pro, name, rate)
+
+      var select = document.createElement("select");
+      select.innerHTML = `<option>${ele.select}</option>`;
+      select.style.width = "100%"
+      select.style.marginTop = "10px"
+
+      var div3 = document.createElement("div");
+      var price = document.createElement("p");
+      price.innerText = `MRP Rs.${ele.price}`;
+      var strike = document.createElement("p");
+      strike.innerText = ele.strike;
+      strike.style.textDecoration = "line-through"
+      div3.append(price, strike);
+      div3.style.display = "flex";
+      div3.style.justifyContent = "space-evenly";
+
+
+      var div5 = document.createElement("div");
+      var icon = document.createElement("i");
+      icon.setAttribute("class", "fa-solid fa-truck");
+      var del = document.createElement("p");
+      del.innerText = ele.common;
+      div5.style.display = "flex";
+      div5.append(icon, del);
+
+      var divbot = document.createElement("div");
+      var quant = document.createElement("input");
+      quant.type = "text";
+      quant.style.width = "20%"
+      quant.style.textAlign = "center"
+      quant.style.marginLeft = "50px"
+      quant.value = "1"
+      var but = document.createElement("button");
+      but.innerText = "Add";
+      but.addEventListener("click", function () {
+        addtocart(ele);
+      });
+      but.setAttribute("id", "but");
+      divbot.append(quant, but);
+
+
+      div.append(div2, image, div4, select, div3, div5, divbot);
+
+      document.querySelector("#pdtbox").append(div);
+      //  localStorage.setItem("cleaning-housing",JSON.stringify(data));
+
+    })
+
+  }
+  function addtocart(ele) {
+    console.log(ele);
+    var cart = JSON.parse(localStorage.getItem("Cart")) || [];
+    cart.push(ele);
+    localStorage.setItem("Cart", JSON.stringify(cart));
+    swal({
+      title: "Added to basket!",
+      text: "You clicked the button!",
+      icon: "success",
+      button: "Aww yiss!",
+    });
+
+  }
+  function myimgfun(ele) {
+    console.log(ele);
+    localStorage.setItem("product", JSON.stringify(ele));
+    window.location.href = "product.html";
+  }
+
+  //-------------sort Logic---------------------------------------
+  document.querySelector("#sortby").addEventListener("change", sortByPrice);
+
+  function sortByPrice() {
+    var sortData = document.querySelector("#sortby").value;
+
+    if (sortData == "dsc") {
+      data.sort(function (a, b) {
+        if (a.price > b.price) return -1;
+        if (a.price < b.price) return 1;
+        return 0;
+      })
+      console.log(data)
+      displayData(data);
+    }
+
+    if (sortData == "asc") {
+      data.sort(function (a, b) {
+        if (a.price > b.price) return 1;
+        if (a.price < b.price) return -1;
+        return 0;
+      })
+      console.log(data)
+      displayData(data)
+    }
+    if (sortData == "alpha") {
+      data.sort(function (a, b) {
+        if (a.detail > b.detail) return 1;
+        if (a.detail < b.detail) return -1;
+        return 0;
+      });
+
+      console.log(data);
+      displayData(data)
+    }
+    if (sortData == "pop") {
+      data.sort(function (a, b) {
+        if (a.rate > b.rate) return -1;
+        if (a.rate < b.rate) return 1;
+        return 0;
+      });
+
+      console.log(data);
+      displayData(data)
+    }
+  }
+  //-------------------------end of sort logic---------------------------------
+  // -----------------checkBox Brand Logic----------------------------------
+  var a = b = c = d = 0; var count1 = 0;
+  function funclick1() {
+    if (count1 == 0) {
+      a = 1;
+      count1++;
+    } else {
+      a = 0;
+      count1--;
+    }
+
+    abc1();
+  }
+  var count2 = 0;
+  function funclick2() {
+    if (count2 == 0) {
+      b = 1;
+      count2++;
+    } else {
+      b = 0;
+      count2--;
+    }
+    abc2();
+  }
+  var count3 = 0;
+  function funclick3() {
+    if (count3 == 0) {
+      c = 1;
+      count3++;
+    } else {
+      c = 0;
+      count3--;
+    }
+    abc3();
+  }
+  var count4 = 0;
+  function funclick4() {
+    if (count4 == 0) {
+      d = 1;
+      count4++;
+    } else {
+      d = 0;
+      count4--;
+    }
+    abc4();
+  }
+
+  function abc1() {
+    if (a == 1) {
+      var w = []
+      data.map(function (ele) {
+        if (ele.proName == "BB Home") {
+
+          w.push(ele);
+          displayData(w);
+        }
+      })
+    } else {
+      displayData(data);
+    }
+  }
+  function abc2() {
+    if (b == 1) {
+      var x = []
+      data.map(function (ele) {
+        if (ele.proName == "Tide") {
+          x.push(ele);
+          displayData(x);
+        }
+      })
+    } else {
+      displayData(data);
+    }
+  }
+  function abc3() {
+    if (c == 1) {
+      var y = [];
+      data.map(function (ele) {
+        if (ele.proName == "Arial") {
+          y.push(ele);
+          displayData(y);
+        }
+      })
+    } else {
+      displayData(data);
+    }
+  }
+  function abc4() {
+    if (d == 1) {
+      var z = [];
+      data.map(function (ele) {
+        if (ele.proName == "Comfort") {
+          z.push(ele);
+          displayData(z);
+        }
+      })
+    } else {
+      displayData(data);
+    }
+  }
+  //--------------------- End of CheckBox Brand----------------------------
+  //---------------------------CheckBox Price-----------------------
+
+  var a = b = c = d = 0; var count1 = 0;
+  function funprice1() {
+    if (count1 == 0) {
+      a = 1;
+      count1++;
+    } else {
+      a = 0;
+      count1--;
+    }
+
+    price1();
+  }
+  var count2 = 0;
+  function funprice2() {
+    if (count2 == 0) {
+      b = 1;
+      count2++;
+    } else {
+      b = 0;
+      count2--;
+    }
+    price2();
+  }
+  var count3 = 0;
+  function funprice3() {
+    if (count3 == 0) {
+      c = 1;
+      count3++;
+    } else {
+      c = 0;
+      count3--;
+    }
+    price3();
+  }
+  var count4 = 0;
+  function funprice4() {
+    if (count4 == 0) {
+      d = 1;
+      count4++;
+    } else {
+      d = 0;
+      count4--;
+    }
+    price4();
+  }
+
+  function price1() {
+    if (a == 1) {
+      var w = []
+      data.map(function (ele) {
+        if (ele.price < 50) {
+
+          w.push(ele);
+          displayData(w);
+        }
+      })
+    } else {
+      displayData(data);
+    }
+  }
+  function price2() {
+    if (b == 1) {
+      var x = []
+      data.map(function (ele) {
+        if (ele.price > 100 && ele.price < 200) {
+          x.push(ele);
+          displayData(x);
+        }
+      })
+    } else {
+      displayData(data);
+    }
+  }
+  function price3() {
+    if (c == 1) {
+      var y = [];
+      data.map(function (ele) {
+        if (ele.price <= 500) {
+          y.push(ele);
+          displayData(y);
+        }
+      })
+    } else {
+      displayData(data);
+    }
+  }
+  function price4() {
+    if (d == 1) {
+      var z = [];
+      data.map(function (ele) {
+        if (ele.price > 1000) {
+          z.push(ele);
+          displayData(z);
+        }
+      })
+    } else {
+      displayData(data);
+    }
+  }
+   //_---------------------------end of CheckBox Price-------------------------
+</script>

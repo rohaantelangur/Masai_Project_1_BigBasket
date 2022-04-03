@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Cart</title>
+    
+    <style>
+        .cartthead {
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+            background-color: #F5F5F5;
+        }
+        .cartbody td {
+            padding-left: 20px;
+            font-weight: 900;
+        }
+        .proced {
+            background-color: green;
+        }
+        .proced p {
+            display: grid;
+            place-items: center;
+            font-weight: bold;
+            color: #fff;
+            padding: 10px 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .redcaert button {
+            background-color: green;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            border: none;
+            padding: 10px 25px;
+        }
+        .coupan {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .cross {
+            text-align: center;
+        }
+        .infra{
+            font-size: 20px;
+            padding: 25px !important;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="d-sm-none d-md-block col-md-5">
+                    
+                </div>
+                <div class="col-5 text-end d-sm-none d-md-block col-md-7">
+                    <samp class="bi bi-telephone">1860 123 1000</samp>
+                    <samp class="bi bi-geo-alt m-2" id="top-address">Address</samp>
+                    <samp class="bi bi-person m-1"> <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="top-name" onclick="check_login()">Login/Sign Up</a> </samp>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section>
+    <!-- Modal for login-->
+    <div id="login-check-pop">
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">LOGIN OR SIGN UP</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <div class="">
+
+                <p class="text-center">
+                    <a class="btn border btn-primary" data-bs-toggle="collapse" href="#log-in" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        LOG IN
+                    </a>
+                    <span> OR </span>
+                    <a class="btn border btn-primary" data-bs-toggle="collapse" href="#sign-up" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        SIGN UP
+                    </a>
+                </p>
+                <div class="collapse" id="log-in">
+                    <div class="card card-body m-5">
+                        <div id="form-login">
+                            <div class="mb-3">
+                                <label for="Input_Email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="Input_Email" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="InputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="InputPassword">
+                            </div>
+                            <button id="btn-login" class="btn btn-primary">SIGN IN</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="collapse" id="sign-up">
+                    <div class="card card-body m-5">
+                        <div id="form-signup">
+                            <div class="mb-3">
+                                <label for="Input1" class="form-label">Enter Name</label>
+                                <input type="text" class="form-control" id="Input1" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your name with anyone else.</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="city" class="form-label">Your city</label>
+                                <input type="email" class="form-control" id="city" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Input2" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="Input2" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="InputP1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="InputP1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="InputP2" class="form-label">Conform Password</label>
+                                <input type="password" class="form-control" id="InputP2">
+                            </div>
+                            <button id="btn-signup" class="btn btn-primary">SIGN IN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+
+  <!-- Modal for Address-->
+<!-- <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <select name="" id="" style="width: 100%; height: 35px;">
+                <option value="">Select your city</option>
+                <option value="">Pune</option>
+                <option value="">Mumbai</option>
+                <option value="">Ahmednagar</option>
+                <option value="">Satara</option>
+                <option value="">Nashik</option>
+            </select>
+
+            <div class="input-group mb-3 my-3">
+                <input type="text" class="form-control" placeholder="Enter your area / apprtment / pincode" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              </div>
+              <div class="d-grid gap-2 col-12 mx-auto">
+                <button class="btn btn-success" type="button">Continue</button>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+</section>
+
+<!-- Header-3 -->
+<section>
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-lg-3 col-xl-3 col-md-3 col-sm-12">
+                    <a href="index.html">
+                    <img style="height: 70px; margin-top: -10px;" src="https://www.bbassets.com/static/v2530/custPage/build/content/img/bb_logo.png" alt=""
+                        srcset="">
+                    </a>
+                </div>
+                <div class="col-lg-7 col-xl-7 col-md-6 col-sm-12">
+                    <input class="form-control w-75 mt-3" style="float: left;" type="text">
+                    <button class="search-btn bg-success mt-3" style="height: 38px; width: 38px; border: 0;"><i class="bi bi-search"></i></button>
+                </div>
+                <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                    <a href="cart.html">
+                    <div class="cart-icon">
+                        <div><i id="cart-img" class="bi bi-basket"></i></div>
+                        <div id="cart-count"><span id="basket">My Basket</span><br><span id="item-count"> </span> items</div>
+                        </div>
+                    </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container">
+            <!-- <hr id="menu-sepreter"> -->
+            <div class="row border">
+                <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12 dropdown bg-success">
+                    <div class="dropdown">
+                        <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            SHOP BY CATEGORY
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li><a class="dropdown-item" href="#" onclick="Fruits()">Fruits & Vegetables</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Food()">Foodgrains, Oil & Masala</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Bakery()">Bakery, Cakes & Dairy</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Beverages()">Beverages</a></li>
+                          <!-- <li><a class="dropdown-item" href="#" onclick="Snacks()">Snacks & Branded Foods</a></li> -->
+                          <!-- <li><a class="dropdown-item" href="#" onclick="Beauty()">Beauty & Hygiene</a></li> -->
+                          <li><a class="dropdown-item" href="#" onclick="Cleaning()">Cleaning & Household</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Kitchen()">Kitchen, Garden & Pets</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Eggs()">Eggs, Meat & Fish</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Gourmet()">Gourmet & World Food</a></li>
+                          <!-- <li><a class="dropdown-item" href="#" onclick="Baby()">Baby Care</a></li> -->
+                          <!-- <li><a class="dropdown-item" href="#" onclick="F_V">View All</a></li> -->
+                        </ul>
+                      </div>
+                </div>
+                <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12">
+                    <b class="bi bi-tag-fill">OFFERS</b>
+                </div>
+                <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12">
+                    <b class="bi bi-shop"> BB SPECIALTY</b>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <h1 id="itemcount"></h1>
+    <div id="notifiction"></div>
+    <section class="container">
+        <div class="row m-0">
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="">
+
+                    <table class="table carttable table-bordered border">
+                        <thead class="cartthead">
+                            <tr>
+                            <th></th>
+                            <th></th>
+                            <th>PRODUCT</th>
+                            <th>PRICE</th>
+                            <th>QUANTITY</th>
+                            <th>SUBTOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody id="carttbody">
+                    </tbody>
+                </table>    
+            </div>
+                <div class="row m-0">
+                    <div class="col-lg-6 p-2 coupan">
+                        <!-- <label for="">Coupan:</label> -->
+                        <input id="CouponCode" type="text" class="w-75" placeholder="ENTER COUPON">
+                    </div>
+                    <div class="col-lg-6  redcaert">
+                        <button onclick="apply_coupon()" >APPLY COUPON</button>
+                        <button onclick="updatecart()">UPDATE CART</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <table class="table carttable table-bordered">
+                    <thead class="cartthead">
+                        <tr>
+                            <th scope="col" colspan="2">CART TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody class="cartbody">
+                        <tr>
+                            <!-- <th scope="row">1</th> -->
+                            <td>SUBTOTAL</td>
+                            <td id="subtotals"></td>
+                        </tr>
+                        <tr>
+                            <!-- <th scope="row">2</th> -->
+                            <td>GST</td>
+                            <td id="gst"></td>
+                        </tr>
+                        <tr>
+                            <td>TOTAL</td>
+                            <td id="totalss"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row m-0">
+                    <div class="col-9">
+                        <div class="proced">
+                            <a href="checkout.html" class="text-decoretion-none"> <p>PROCED TO CHECKOUT</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>   
+    
+    
+<!-- Footer-1 -->
+<section>
+    <div class="container my-5">
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-6 mb-3 text_color">
+                Bigbasket<br>
+                <a href="aboutus.html">About Us</a><br>
+                <a href="aboutus.html">In News</a><br>
+                <a href="aboutus.html">Green bigbasket</a><br>
+                <a href="aboutus.html">Privacy Policy</a><br>
+                <a href="aboutus.html">Affiliate</a><br>
+                <a href="aboutus.html">Terms and Conditions</a><br>
+                <a href="aboutus.html">Careers At bigbasket</a><br>
+                <a href="aboutus.html">bb Instant</a><br>
+                <a href="aboutus.html">bb Daily</a><br>
+                <a href="aboutus.html">bb Blog</a><br>
+                <a href="aboutus.html">bbnow</a>
+              </div>
+              <div class="col-lg-3 col-6 mb-3 text_color">
+                Help<br>
+                <a href="aboutus.html">FAQs</a><br>
+                <a href="aboutus.html">Contact Us</a><br>
+                <a href="aboutus.html">bb Wallet FAQs</a><br>
+                <a href="aboutus.html">bb Wallet T&Cs</a><br>
+                <a href="aboutus.html">Vendor Connect</a><br>
+              </div>
+              <div class="col-lg-3 col-6 mb-3 text_color">
+                <p>Download Our App</p>
+                <img src="https://www.bbassets.com/static/v2530/custPage/build/content/img/Google-App-store-icon.png" alt="">
+                <img src="https://www.bbassets.com/static/v2530/custPage/build/content/img/Apple-App-store-icon.png" alt="">
+              </div>
+              <div class="col-lg-3 col-6 mb-3">
+                <p class="text_color">Get Social With Us</p>
+                <i class="bi bi-facebook Footer-1-icon"></i>
+                <i class="bi bi-instagram Footer-1-icon"></i>
+                <i class="bi bi-pinterest Footer-1-icon"></i>
+                <i class="bi bi-twitter Footer-1-icon"></i>
+              </div>
+            </div>
+          </div>
+        <hr>
+    </div>
+</section>
+
+<!-- Footer-2 -->
+<section>
+    <div class="container my-5">
+        <div class="row">
+          <div class="col-2">
+            <p class="text_color">POPULAR CATEGORIES:</p>
+          </div>
+          <div class="col-10 text_small">
+            Sunflower Oils, Wheat Atta, Ghee, Milk, Health Drinks, Flakes, Organic F&V, Namkeen, Eggs, Floor Cleaners, Other Juices, Leafy Vegetables, Frozen Veg Food, Diapers & Wipes,
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+              <p class="text_color">POPULAR BRANDS:</p>
+            </div>
+            <div class="col-10 text_small">
+                Amul, Nescafe , MTR, Red Bull, elite cake, Pediasure, Yummiez, Yera, Yakult, Britannia, Wow Momo, Fortune , Haldirams , Ferrero, Lays, Patanjali, McCain, kwality walls, Cadbury Dairy Milk, Pedigree,                </div>
+          </div>
+
+          <div class="row">
+            <div class="col-2">
+              <p class="text_color">CITIES WE SERVE:</p>
+            </div>
+            <div class="col-10 text_small">
+                Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Mysore, Madurai, Coimbatore, Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Nashik, Lucknow-Kanpur, Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore, Chandigarh Tricity, Jaipur, Bhopal, Noida-Ghaziabad, Kochi, Krishna District, Bhubaneshwar-Cuttack, Guwahati, Renigunta, Hubli, Davanagere, Trichy, Amaravathi, Raipur, Rajkot, Gwalior, Bareilly, Allahabad, Hyderabad Rural, Bangalore Rural, Chennai Rural, Vizag Rural, Lucknow Rural, Noida Rural, Ahmedabad Rural, Bhopal Rural, Bhubaneswar Rural, Coimbatore Rural, Chandigarh Rural, Gurugram Rural, Guwahati Rural, Indore Rural, Kochi Rural, Kolkata Rural, Mumbai Rural, Mysore Rural, Nagpur Rural, Patna Rural, Pune Rural, Surat Rural, Vadodara Rural, Jaipur Rural, 
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-2">
+              <p class="text_color">PAYMENT OPTIONS:</p>
+            </div>
+            <div class="col-10">
+                  CASH ON DELIVERY
+            </div>
+          </div>
+
+      </div>
+</section>
+
+<!-- Footer-3 -->
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+          <div class="col">
+              <small>
+                Copyright © 2021-2023 Supermarket Grocery Supplies Pvt Ltd
+              </small>
+            
+          </div>
+        </div>
+      </div>
+</section>
+
+
+
+
+
+<!-- <h1>Hello, world!</h1> -->
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+-->
+<!-- <script src="cart.js"></script> -->
+<!-- <script src="data.js"></script> -->
+<script src="index.js"></script>
+    
+    
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script> -->
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+
+    <!-- <script src="cart.js"></script> -->
+</body>
+
+</html>
+<script>
+    // var data = [
+    //     {
+    //         img :"https://fundamental.in/wp-content/uploads/2020/12/mxw_1440f_auto-4-600x600.png",
+    //          name :"fjwehiufheuh",
+    //          price : 122333,
+    //          qty : 1, 
+    //     },
+    //     {
+    //         img :"https://fundamental.in/wp-content/uploads/2020/12/mxw_1440f_auto-4-600x600.png",
+    //          name :"fjwehiufheuh",
+    //          price : 122333,
+    //          qty : 2, 
+    //     },
+    //     {
+    //         img :"https://fundamental.in/wp-content/uploads/2020/12/mxw_1440f_auto-4-600x600.png",
+    //          name :"fjwehiufheuh",
+    //          price : 122333,
+    //          qty : 0, 
+    //     },
+    //     {
+    //         img :"https://fundamental.in/wp-content/uploads/2020/12/mxw_1440f_auto-4-600x600.png",
+    //          name :"fjwehiufheuh",
+    //          price : 122333,
+    //          qty : 1, 
+    //     },
+    //     {
+    //         img :"https://fundamental.in/wp-content/uploads/2020/12/mxw_1440f_auto-4-600x600.png",
+    //          name :"fjwehiufheuh",
+    //          price : 122333,
+    //          qty : 2, 
+    //     },
+    //     {
+    //         img :"https://fundamental.in/wp-content/uploads/2020/12/mxw_1440f_auto-4-600x600.png",
+    //          name :"fjwehiufheuh",
+    //          price : 122333,
+    //          qty : 0, 
+    //     },
+    //     {
+    //         img :"https://fundamental.in/wp-content/uploads/2020/12/mxw_1440f_auto-4-600x600.png",
+    //          name :"fjwehiufheuh",
+    //          price : 122333,
+    //          qty : 1, 
+    //     },
+    //     {
+    //         img :"https://fundamental.in/wp-content/uploads/2020/12/mxw_1440f_auto-4-600x600.png",
+    //          name :"fjwehiufheuh",
+    //          price : 122333,
+    //          qty : 2, 
+    //     },
+    //     {
+    //         img :"https://fundamental.in/wp-content/uploads/2020/12/mxw_1440f_auto-4-600x600.png",
+    //          name :"fjwehiufheuh",
+    //          price : 122333,
+    //          qty : 0, 
+    //     },
+
+    // ]
+    var sum=0;
+    var data = JSON.parse(localStorage.getItem("Cart")) || [];
+    console.log(data)
+    data.map(function (el, index) {
+        var tr = document.createElement("tr");
+
+        var td1 = document.createElement("td");
+        td1.innerHTML = `<i class="bi bi-trash3"></i>`;
+        td1.style.padding="25px"
+        td1.style.fontSize="20px";
+        td1.addEventListener("click", function () {
+            removeItems(el, index)
+        });
+
+
+        var td2 = document.createElement("td");
+        var img = document.createElement("img");
+        img.src = el.image_url;
+        img.style.width = "5vw";
+        td2.append(img);
+
+        var td3 = document.createElement("td");
+        td3.innerHTML = el.detail;
+        td3.style.padding="25px";
+
+        var td4 = document.createElement("td");
+        td4.innerText = "₹"+Math.ceil(el.price);
+        td4.style.padding="25px";
+
+        var btn1= document.createElement("button");
+        btn1.style.border="none"
+        btn1.innerText="+"
+        btn1.addEventListener("click", function () {
+            // removeItems(el, index)
+            el.quant++;
+            localStorage.setItem("Cart",JSON.stringify((data)))
+            window.location.reload()
+        });
+        var inp=document.createElement("input");
+        inp.style.border="none"
+        inp.style.textAlign="center"
+        inp.style.width="25px"
+        inp.value=el.quant
+        var btn2= document.createElement("button");
+        btn2.style.border="none"
+        btn2.innerText=" - "
+        btn2.addEventListener("click", function () {
+            // removeItems(el, index)
+            if(el.quant>1){
+
+                el.quant--;
+                localStorage.setItem("Cart",JSON.stringify((data)))
+                window.location.reload()
+            }
+        });
+
+        var div=document.createElement("div");
+        div.style.padding="25px"
+        div.append(btn1,inp,btn2)
+
+        
+        var td6 = document.createElement("td");
+        td6.innerText = "₹"+ Math.ceil(el.price*el.quant);
+        td6.style.padding="25px";
+        td6.style.color="red";
+        td6.style.fontWeight="bold";
+        td6.style.fontSize="20px";
+        tr.append(td1, td2, td3, td4, div, td6)
+        
+        document.querySelector("#carttbody").append(tr)
+        // console.log(el)
+        sum=sum+ Math.ceil(el.price*el.quant);
+
+    });
+    // updatecart();
+    var count=0
+    function apply_coupon(){
+        var code = document.querySelector("#CouponCode").value
+        console.log(code)
+        if(code=="OFF10" && count<1){
+            sum=Math.ceil(sum-(sum*10)/100);
+            // Math.ceil(sum)
+            count++;
+            var notofi = document.querySelector("#notifiction")
+            notofi.innerHTML=`
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Accepted !</strong> Your Coupan code is validate and you have Discount 10%.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`
+        }else if(code!=="OFF10"){
+            var notofi = document.querySelector("#notifiction")
+            notofi.innerHTML=`
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Oops! Your Coupan is not validate</strong> Tey Next Time! 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`
+        }else{
+            var notofi = document.querySelector("#notifiction")
+            notofi.innerHTML=`
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Sorry..!</strong> You are all ready coupan code is use.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`
+        }
+
+    }
+
+
+
+
+    function removeItems(el, index) {
+        //   console.log(el,index)
+        data.splice(index, 1);
+        console.log(data)
+        localStorage.setItem("Cart", JSON.stringify(data));
+        window.location.reload();
+    }
+
+    function updatecart()
+    {
+        document.querySelector("#subtotals").innerText =  "₹ "+sum;
+        
+        var gst = (sum * 18) /100;
+        document.querySelector("#gst").innerHTML =  "₹ "+Math.ceil(gst);
+    
+        var tot = sum + gst;
+       var subtotal =  document.querySelector("#totalss").innerText = "₹ "+Math.round(tot); 
+       subtotal.style.color = "red";
+    }
+
+
+</script>
