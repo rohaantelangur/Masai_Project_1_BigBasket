@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Product</title>
+</head>
+<style>
+    * {
+        font-family: system-ui;
+    }
+
+    #container {
+        display: flex;
+        margin: auto;
+        width: 95%;
+        gap: 30px;
+    }
+
+    #container_right {
+        width: 60%;
+        /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+        padding-left: 20px;
+        padding-right: 20px;
+        border-left: 1px solid black;
+    }
+
+    #container_left {
+        margin-left: 100px;
+
+    }
+
+    #price {
+        display: flex;
+        justify-content: space-between;
+        font-family: system-ui;
+        font-size: small;
+        /* border: 1px solid red; */
+    }
+
+    #rating {
+        display: flex;
+        justify-content: space-between;
+        font-size: small;
+    }
+
+    #Qty {
+        display: flex;
+        justify-content: space-between;
+        height: 50px;
+        font-size: small;
+        margin-top: 10px;
+    }
+
+    #delivery {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        font-size: small;
+    }
+
+    #selection {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid grey;
+        /* margin: 10px 10px 10px 10px; */
+        font-size: small;
+        width: 100%;
+
+    }
+    #mainselection {
+        width: 100%;
+        margin: auto;
+    }
+
+    #delivery>div>img {
+        width: 50px;
+        height: 40px;
+        margin-top: 5px;
+    }
+
+    #Qty>input {
+        /* height:100px; */
+        border: 0px;
+    }
+
+    #Qty>button {
+        height: 38px;
+        margin-top: -1px;
+    }
+
+    #selection>div {
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #selection>div>div {
+        margin-top: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    button {
+        background-color: rgb(148, 241, 41);
+        height: 40px;
+        width: 100px;
+        border: 1px solid white;
+    }
+
+    input {
+        height: 30px;
+        width: 50px;
+    }
+
+    h5 {
+        color: grey;
+    }
+
+    h3 {
+        font-family: system-ui;
+        font-weight: 400;
+    }
+
+    #p1 {
+        font-size: 18px;
+    }
+
+    #p2 {
+        font-weight: bold;
+        font-size: 18px;
+        /* border: 1px solid red; */
+        /* margin-top: 0px; */
+    }
+
+    #p3 {
+        color: brown;
+        margin-top: 27px;
+    }
+
+    #p4 {
+        color: grey;
+        margin-top: 27px;
+    }
+
+    #description {
+        margin-top: 80px;
+        padding: 30px;
+    }
+
+    #description>div>p {
+        font-size: small;
+    }
+</style>
+
+<body>
+
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="d-sm-none d-md-block col-md-5">
+                    
+                </div>
+                <div class="col-5 text-end d-sm-none d-md-block col-md-7">
+                    <samp class="bi bi-telephone">1860 123 1000</samp>
+                    <samp class="bi bi-geo-alt m-2" id="top-address">Address</samp>
+                    <samp class="bi bi-person m-1"> <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="top-name" onclick="check_login()">Login/Sign Up</a> </samp>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section>
+    <!-- Modal for login-->
+    <div id="login-check-pop">
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">LOGIN OR SIGN UP</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <div class="">
+
+                <p class="text-center">
+                    <a class="btn border btn-primary" data-bs-toggle="collapse" href="#log-in" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        LOG IN
+                    </a>
+                    <span> OR </span>
+                    <a class="btn border btn-primary" data-bs-toggle="collapse" href="#sign-up" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        SIGN UP
+                    </a>
+                </p>
+                <div class="collapse" id="log-in">
+                    <div class="card card-body m-5">
+                        <div id="form-login">
+                            <div class="mb-3">
+                                <label for="Input_Email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="Input_Email" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="InputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="InputPassword">
+                            </div>
+                            <button id="btn-login" class="btn btn-primary">SIGN IN</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="collapse" id="sign-up">
+                    <div class="card card-body m-5">
+                        <div id="form-signup">
+                            <div class="mb-3">
+                                <label for="Input1" class="form-label">Enter Name</label>
+                                <input type="text" class="form-control" id="Input1" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your name with anyone else.</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="city" class="form-label">Your city</label>
+                                <input type="email" class="form-control" id="city" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Input2" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="Input2" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="InputP1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="InputP1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="InputP2" class="form-label">Conform Password</label>
+                                <input type="password" class="form-control" id="InputP2">
+                            </div>
+                            <button id="btn-signup" class="btn btn-primary">SIGN IN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+
+  <!-- Modal for Address-->
+<!-- <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <select name="" id="" style="width: 100%; height: 35px;">
+                <option value="">Select your city</option>
+                <option value="">Pune</option>
+                <option value="">Mumbai</option>
+                <option value="">Ahmednagar</option>
+                <option value="">Satara</option>
+                <option value="">Nashik</option>
+            </select>
+
+            <div class="input-group mb-3 my-3">
+                <input type="text" class="form-control" placeholder="Enter your area / apprtment / pincode" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              </div>
+              <div class="d-grid gap-2 col-12 mx-auto">
+                <button class="btn btn-success" type="button">Continue</button>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+</section>
+
+<!-- Header-3 -->
+<section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-xl-3 col-md-3 col-sm-12">
+                    <a href="index.html">
+
+                        <img style="height: 70px; margin-top: -10px;" src="https://www.bbassets.com/static/v2530/custPage/build/content/img/bb_logo.png" alt=""
+                        srcset="">
+                    </a>
+                </div>
+                <div class="col-lg-7 col-xl-7 col-md-6 col-sm-12">
+                    <input class="form-control w-75 mt-3" style="float: left;" type="text">
+                    <button class="search-btn bg-success mt-3" style="height: 38px; width: 38px; border: 0;"><i class="bi bi-search"></i></button>
+                </div>
+                <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                    <a href="cart.html">
+                        <div class="cart-icon">
+                            <div><i id="cart-img" class="bi bi-basket"></i></div>
+                            <div id="cart-count"><span id="basket">My Basket</span><br><span id="item-count"> </span> items</div>
+                        </div>
+                    </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container">
+            <!-- <hr id="menu-sepreter"> -->
+            <div class="row border">
+                <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12 dropdown bg-success">
+                    <div class="dropdown">
+                        <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            SHOP BY CATEGORY
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li><a class="dropdown-item" href="#" onclick="Fruits()">Fruits & Vegetables</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Food()">Foodgrains, Oil & Masala</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Bakery()">Bakery, Cakes & Dairy</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Beverages()">Beverages</a></li>
+                          <!-- <li><a class="dropdown-item" href="#" onclick="Snacks()">Snacks & Branded Foods</a></li> -->
+                          <!-- <li><a class="dropdown-item" href="#" onclick="Beauty()">Beauty & Hygiene</a></li> -->
+                          <li><a class="dropdown-item" href="#" onclick="Cleaning()">Cleaning & Household</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Kitchen()">Kitchen, Garden & Pets</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Eggs()">Eggs, Meat & Fish</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Gourmet()">Gourmet & World Food</a></li>
+                          <!-- <li><a class="dropdown-item" href="#" onclick="Baby()">Baby Care</a></li> -->
+                          <!-- <li><a class="dropdown-item" href="#" onclick="F_V">View All</a></li> -->
+                        </ul>
+                      </div>
+                </div>
+                <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12">
+                    <b class="bi bi-tag-fill">OFFERS</b>
+                </div>
+                <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12">
+                    <b class="bi bi-shop"> BB SPECIALTY</b>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- --------------------------- -->
+    <div class="container">
+
+
+            <div id="container">
+                <div id="container_left">
+                    <img src="" id="image1" />
+                </div>
+
+
+                <div id="container_right">
+                    <h5 id="pname"></h5>
+                    <h2 id="detail"></h2>
+                    <div id="price">
+                        <p id="p1" style=" margin-right: 10px; text-decoration: line-through;"></p>
+                        <p id="p2"></p>
+                        <p id="p3"></p>
+                        <p id="p4">(Inclusive of all taxes)</p>
+                        <div style="flex-grow: 2;"></div>
+                    </div>
+                    <div id="rating" style="text-align: left;" ;>
+                        <div style="color: rgb(238, 74, 10); font-weight: bold;" id="rate"></div>
+                        <div>48086 Ratings & 909 Reviews</div>
+                        <div style="flex-grow: 2;"></div>
+                    </div>
+                    <div id="Qty">
+                        <div><input id="Product_qty_in" type="number" placeholder="Qty" id="quant" value="1"/></div>
+                        <button id="addtobasket">Add to Basket</button>
+                        <button id="buy">Buy Now</button>
+                        <div style="flex-grow: 2;"></div>
+                    </div>
+                    <div id="delivery">
+                        <div><img
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuDwm8x8Tp70RqelgMBTJzV5vKoTsnCM00gg&usqp=CAU" />
+                        </div>
+                        <div>
+                            <p>Standard: Today 3:00PM - 7:30PM</p>
+                        </div>
+                        <div style="flex-grow: 2;"></div>
+                        <div></div>
+                    </div>
+                    <div id="mainselection">
+                        <div id="selection" style="background-color: rgb(221, 216, 216);">
+                            <div>
+                                <div id="select"></div>
+                            </div>
+                            <div style="background-color: rgb(148, 241, 41);">
+                                <div>✓</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ------------------- -->
+
+            <div id="description">
+                <h2 id="pro"></h2>
+                <hr>
+                <div>
+                    <h4>About the Product</h4>
+                    <p>Launched on 27th May 2002, Aashirvaad Whole Wheat Atta has now become number one in branded
+                        packaged atta across the country. Behind every Aashirvaad pack are the Indian farmers and
+                        Aashirvaad experts who’ve made the atta with extra care. Aashirvaad prides itself in making 100%
+                        pure whole wheat atta with all its natural dietary fibres intact which ensures that you and your
+                        family receive optimum nutrition for a healthy life. Directly sourced from a wide network of
+                        Indian rural farmers, Aashirvaad Superior MP Atta is Made in India. They are showered with just
+                        the right amount of rain and sun-kissed to perfection which allows the grains to be heavy on the
+                        palm and amber in colour. The grain produce goes through a 3-step cleaning process that ensures
+                        the best quality of wheat grains. These expertly sourced grains undergo mechanised packaging
+                        that ensures zero human contact and 100% safety. To ensure the retention of the wheat’s high
+                        nutritional value, the grains are ground using the traditional ‘chakki’ method. This helps
+                        lock-in the highest nutritional value in the whole wheat flour. The dietary fibres and natural
+                        nutrients help in easy digestion and supporting immunity which are essential for your family’s
+                        daily intake. The dough made from Aashirvaad Superior MP Atta absorbs more water which makes
+                        sure that the rotis remain softer for a longer period. You and your family can lead a fit and
+                        healthier lifestyle as you enjoy soft, fluffy and delicious rotis from this naturally protein
+                        rich whole wheat atta.</p>
+                </div>
+
+                <div>
+                    <h4>Specification</h4>
+                    <p id="brand"></p>
+                    <p id="namepro"></p>
+                    <p id="pp"></p>
+                    <p id="offer"></p>
+                </div>
+
+                <div>
+                    <h4>Nutritional Facts</h4>
+                    <p>Energy (kcal) 367</p>
+                    <p>Protein (g) 10.9</p>
+                    <p>Fat(g) 1.7</p>
+                    <p>Carbohydrate (g) 77.0, of which Sugar (g) 5.4</p>
+                    <p>Dietary Fibre (g) 10.5</p>
+                </div>
+            </div>
+
+        
+    </div>
+
+
+    <!-- Footer-1 -->
+    <section>
+        <div class="container my-5">
+            <div class="container">
+                <div class="row">
+                  <div class="col-lg-3 col-6 mb-3 text_color">
+                    Bigbasket<br>
+                    <a href="aboutus.html">About Us</a><br>
+                    <a href="aboutus.html">In News</a><br>
+                    <a href="aboutus.html">Green bigbasket</a><br>
+                    <a href="aboutus.html">Privacy Policy</a><br>
+                    <a href="aboutus.html">Affiliate</a><br>
+                    <a href="aboutus.html">Terms and Conditions</a><br>
+                    <a href="aboutus.html">Careers At bigbasket</a><br>
+                    <a href="aboutus.html">bb Instant</a><br>
+                    <a href="aboutus.html">bb Daily</a><br>
+                    <a href="aboutus.html">bb Blog</a><br>
+                    <a href="aboutus.html">bbnow</a>
+                  </div>
+                  <div class="col-lg-3 col-6 mb-3 text_color">
+                    Help<br>
+                    <a href="aboutus.html">FAQs</a><br>
+                    <a href="aboutus.html">Contact Us</a><br>
+                    <a href="aboutus.html">bb Wallet FAQs</a><br>
+                    <a href="aboutus.html">bb Wallet T&Cs</a><br>
+                    <a href="aboutus.html">Vendor Connect</a><br>
+                  </div>
+                  <div class="col-lg-3 col-6 mb-3 text_color">
+                    <p>Download Our App</p>
+                    <img src="https://www.bbassets.com/static/v2530/custPage/build/content/img/Google-App-store-icon.png" alt="">
+                    <img src="https://www.bbassets.com/static/v2530/custPage/build/content/img/Apple-App-store-icon.png" alt="">
+                  </div>
+                  <div class="col-lg-3 col-6 mb-3">
+                    <p class="text_color">Get Social With Us</p>
+                    <i class="bi bi-facebook Footer-1-icon"></i>
+                    <i class="bi bi-instagram Footer-1-icon"></i>
+                    <i class="bi bi-pinterest Footer-1-icon"></i>
+                    <i class="bi bi-twitter Footer-1-icon"></i>
+                  </div>
+                </div>
+              </div>
+            <hr>
+        </div>
+    </section>
+
+    <!-- Footer-2 -->
+    <section>
+        <div class="container my-5">
+            <div class="row">
+              <div class="col-2">
+                <p class="text_color">POPULAR CATEGORIES:</p>
+              </div>
+              <div class="col-10 text_small">
+                Sunflower Oils, Wheat Atta, Ghee, Milk, Health Drinks, Flakes, Organic F&V, Namkeen, Eggs, Floor Cleaners, Other Juices, Leafy Vegetables, Frozen Veg Food, Diapers & Wipes,
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                  <p class="text_color">POPULAR BRANDS:</p>
+                </div>
+                <div class="col-10 text_small">
+                    Amul, Nescafe , MTR, Red Bull, elite cake, Pediasure, Yummiez, Yera, Yakult, Britannia, Wow Momo, Fortune , Haldirams , Ferrero, Lays, Patanjali, McCain, kwality walls, Cadbury Dairy Milk, Pedigree,                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-2">
+                  <p class="text_color">CITIES WE SERVE:</p>
+                </div>
+                <div class="col-10 text_small">
+                    Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Mysore, Madurai, Coimbatore, Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Nashik, Lucknow-Kanpur, Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore, Chandigarh Tricity, Jaipur, Bhopal, Noida-Ghaziabad, Kochi, Krishna District, Bhubaneshwar-Cuttack, Guwahati, Renigunta, Hubli, Davanagere, Trichy, Amaravathi, Raipur, Rajkot, Gwalior, Bareilly, Allahabad, Hyderabad Rural, Bangalore Rural, Chennai Rural, Vizag Rural, Lucknow Rural, Noida Rural, Ahmedabad Rural, Bhopal Rural, Bhubaneswar Rural, Coimbatore Rural, Chandigarh Rural, Gurugram Rural, Guwahati Rural, Indore Rural, Kochi Rural, Kolkata Rural, Mumbai Rural, Mysore Rural, Nagpur Rural, Patna Rural, Pune Rural, Surat Rural, Vadodara Rural, Jaipur Rural, 
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-2">
+                  <p class="text_color">PAYMENT OPTIONS:</p>
+                </div>
+                <div class="col-10">
+                      CASH ON DELIVERY
+                </div>
+              </div>
+
+          </div>
+    </section>
+
+    <!-- Footer-3 -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                  <small>
+                    Copyright © 2021-2023 Supermarket Grocery Supplies Pvt Ltd
+                  </small>
+                
+              </div>
+            </div>
+          </div>
+    </section>
+
+
+
+
+
+    <!-- <h1>Hello, world!</h1> -->
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+    <!-- <script src="cart.js"></script> -->
+    <!-- <script src="data.js"></script> -->
+    <script src="index.js"></script>
+
+
+</body>
+
+</html>
+<script>
+    var cart = JSON.parse(localStorage.getItem("Cart")) || [];
+    var product = JSON.parse(localStorage.getItem("product"));
+    console.log(product);
+    var proName = document.querySelector("title").innerText = product.proName;
+    var proName = document.querySelector("#pname").innerText = product.proName;
+    var image = document.querySelector("#image1");
+    image.src = product.image_url;
+    image.style.width = "500px";
+    var detail = document.querySelector("#detail").innerText = product.detail;
+    var strike = document.querySelector("#p1").innerText = `MRP Rs.${product.strike}`
+    var price = document.querySelector("#p2").innerText = `Price Rs. ${product.price}`;
+    var off = document.querySelector("#p3").innerText = product.off;
+    var rate = document.querySelector("#rate").innerText = `${product.rate}★`
+    //  document.querySelector("#quant").value = product.quant;
+    document.querySelector("#select").innerText = product.select;
+    document.querySelector("#pro").innerText = product.proName + product.detail;
+
+    document.querySelector("#brand").innerText = `Brand : ${proName}`;
+    document.querySelector("#namepro").innerText = `Type : ${proName}`;
+    document.querySelector("#pp").innerText = `Cost : ${price}`;
+    document.querySelector("#offer").innerText = `Offer : ${off}`;
+    var but1 = document.querySelector("#addtobasket");
+    but1.addEventListener("click", addtoCart);
+    function addtoCart() {
+        console.log(product)
+        cart.push(product);
+        localStorage.setItem("Cart", JSON.stringify(cart));
+        alert("Successfully Added Product to Basket................. ")
+    }
+    but1.style.cursor = "pointer";
+    var but2 = document.querySelector("#buy");
+    but2.addEventListener("click", buyFun);
+    but2.style.cursor = "pointer";
+    function buyFun() {
+        cart.push(product);
+        localStorage.setItem("Cart", JSON.stringify(cart));
+        window.location.href = "cart.html";
+    }
+
+</script>
