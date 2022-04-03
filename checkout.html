@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>Checkout</title>
+    <style>
+        .coupon {
+            display: flex;
+            margin: auto;
+            border: 3px dashed rgb(170, 170, 170);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="d-sm-none d-md-block col-md-5">
+                    
+                </div>
+                <div class="col-5 text-end d-sm-none d-md-block col-md-7">
+                    <samp class="bi bi-telephone">1860 123 1000</samp>
+                    <samp class="bi bi-geo-alt m-2" id="top-address">Address</samp>
+                    <samp class="bi bi-person m-1"> <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="top-name" onclick="check_login()">Login/Sign Up</a> </samp>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section>
+    <!-- Modal for login-->
+    <div id="login-check-pop">
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">LOGIN OR SIGN UP</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <div class="">
+
+                <p class="text-center">
+                    <a class="btn border btn-primary" data-bs-toggle="collapse" href="#log-in" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        LOG IN
+                    </a>
+                    <span> OR </span>
+                    <a class="btn border btn-primary" data-bs-toggle="collapse" href="#sign-up" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        SIGN UP
+                    </a>
+                </p>
+                <div class="collapse" id="log-in">
+                    <div class="card card-body m-5">
+                        <div id="form-login">
+                            <div class="mb-3">
+                                <label for="Input_Email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="Input_Email" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="InputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="InputPassword">
+                            </div>
+                            <button id="btn-login" class="btn btn-primary">SIGN IN</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="collapse" id="sign-up">
+                    <div class="card card-body m-5">
+                        <div id="form-signup">
+                            <div class="mb-3">
+                                <label for="Input1" class="form-label">Enter Name</label>
+                                <input type="text" class="form-control" id="Input1" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your name with anyone else.</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="city" class="form-label">Your city</label>
+                                <input type="email" class="form-control" id="city" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Input2" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="Input2" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="InputP1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="InputP1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="InputP2" class="form-label">Conform Password</label>
+                                <input type="password" class="form-control" id="InputP2">
+                            </div>
+                            <button id="btn-signup" class="btn btn-primary">SIGN IN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+
+  <!-- Modal for Address-->
+<!-- <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <select name="" id="" style="width: 100%; height: 35px;">
+                <option value="">Select your city</option>
+                <option value="">Pune</option>
+                <option value="">Mumbai</option>
+                <option value="">Ahmednagar</option>
+                <option value="">Satara</option>
+                <option value="">Nashik</option>
+            </select>
+
+            <div class="input-group mb-3 my-3">
+                <input type="text" class="form-control" placeholder="Enter your area / apprtment / pincode" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              </div>
+              <div class="d-grid gap-2 col-12 mx-auto">
+                <button class="btn btn-success" type="button">Continue</button>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+</section>
+
+<!-- Header-3 -->
+<section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-xl-3 col-md-3 col-sm-12">
+                    <a href="index.html">
+                    <img style="height: 70px; margin-top: -10px;" src="https://www.bbassets.com/static/v2530/custPage/build/content/img/bb_logo.png" alt=""
+                        srcset="">
+                    </a>
+                </div>
+                <div class="col-lg-7 col-xl-7 col-md-6 col-sm-12">
+                    <input class="form-control w-75 mt-3" style="float: left;" type="text">
+                    <button class="search-btn bg-success mt-3" style="height: 38px; width: 38px; border: 0;"><i class="bi bi-search"></i></button>
+                </div>
+                <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                    <a href="cart.html">
+                    <div class="cart-icon">
+                        <div><i id="cart-img" class="bi bi-basket"></i></div>
+                        <div id="cart-count"><span id="basket">My Basket</span><br><span id="item-count"> </span> items</div>
+                        </div>
+                    </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container">
+            <!-- <hr id="menu-sepreter"> -->
+            <div class="row border">
+                <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12 dropdown bg-success">
+                    <div class="dropdown">
+                        <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            SHOP BY CATEGORY
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li><a class="dropdown-item" href="#" onclick="Fruits()">Fruits & Vegetables</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Food()">Foodgrains, Oil & Masala</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Bakery()">Bakery, Cakes & Dairy</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Beverages()">Beverages</a></li>
+                          <!-- <li><a class="dropdown-item" href="#" onclick="Snacks()">Snacks & Branded Foods</a></li> -->
+                          <!-- <li><a class="dropdown-item" href="#" onclick="Beauty()">Beauty & Hygiene</a></li> -->
+                          <li><a class="dropdown-item" href="#" onclick="Cleaning()">Cleaning & Household</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Kitchen()">Kitchen, Garden & Pets</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Eggs()">Eggs, Meat & Fish</a></li>
+                          <li><a class="dropdown-item" href="#" onclick="Gourmet()">Gourmet & World Food</a></li>
+                          <!-- <li><a class="dropdown-item" href="#" onclick="Baby()">Baby Care</a></li> -->
+                          <!-- <li><a class="dropdown-item" href="#" onclick="F_V">View All</a></li> -->
+                        </ul>
+                      </div>
+                </div>
+                <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12">
+                    <b class="bi bi-tag-fill">OFFERS</b>
+                </div>
+                <div class="col-lg-2 col-xl-2 col-md-3 col-sm-12">
+                    <b class="bi bi-shop"> BB SPECIALTY</b>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-6 col-md-12 col-sm-12 ">
+                <h6> BILLING DETAILS</h6>
+                <hr>
+                <div class="">
+                    <div class="row">
+                        <div class="col">
+                            <label for="">First Name</label>
+                            <input type="text" class="w-100">
+                        </div>
+                        <div class="col">
+                            <label for="">Last Name</label>
+                            <input type="text" class="w-100">
+                        </div>
+                    </div>
+                    <label class="mt-4" for="">Street address</label>
+                    <input type="text" class="w-100">
+
+                    <label class="mt-4" for="">Town / City</label>
+                    <input type="text" class="w-100">
+
+                    <label class="mt-4" for="">State</label>
+                    <input type="text" class="w-100">
+
+                    <label class="mt-4" for="">PIN</label>
+                    <input type="text" class="w-100">
+
+                    <label class="mt-4" for="">Phone</label>
+                    <input type="text" class="w-100">
+
+                    <label class="mt-4" for="">Email address</label>
+                    <input type="text" class="w-100">
+
+                    <input type="checkbox"> <label for="">Create an account?</label>
+
+                    <div class="d-flex bd-highlight">
+                        <div class="pt-3 flex-grow-1 bd-highlight">
+                            <h6>SHIP TO A DIFFERENT ADDRESS?</h6>
+                        </div>
+                        <div class="pt-3 bd-highlight"><input type="checkbox" data-bs-toggle="collapse"
+                                href="#collapseExample" role="button" aria-expanded="false"
+                                aria-controls="collapseExample"></div>
+                    </div>
+                    <hr>
+                    <div class="collapse" id="collapseExample">
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="">First Name</label>
+                                <input type="text" class="w-100">
+                            </div>
+                            <div class="col">
+                                <label for="">Last Name</label>
+                                <input type="text" class="w-100">
+                            </div>
+                        </div>
+                        <label class="mt-4" for="">Street address</label>
+                        <input type="text" class="w-100">
+
+                        <label class="mt-4" for="">Town / City</label>
+                        <input type="text" class="w-100">
+
+                        <label class="mt-4" for="">State</label>
+                        <input type="text" class="w-100">
+
+                        <label class="mt-4" for="">PIN</label>
+                        <input type="text" class="w-100">
+                    </div>
+
+                    <label class="mt-4" for="">Order notes (optional)</label>
+                    <!-- <input type="text-area" class="w-100"> -->
+                    <textarea id="story" class="form-control" name="story" rows="5" cols="70">
+                        </textarea>
+
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <h6> YOUR ORDER</h6>
+                <hr>
+                <div class="d-flex bd-highlight bg-light p-3">
+                    <div class="pt-3 flex-grow-1 bd-highlight">
+                        <h6>PRODUCT</h6>
+                    </div>
+                    <div class="pt-3 bd-highlight">
+                        <h6>SUBTOTAL</h6>
+                    </div>
+                </div>
+
+                <div class="d-flex bd-highlight bg-light p-3">
+                    <div class="flex-grow-1 bd-highlight">
+                        <div id="Product_Name">
+
+                        </div>
+                    </div>
+                    <div class="bd-highlight">
+                        <div id="pp">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex bd-highlight bg-light p-3">
+                    <div class="pt-3 flex-grow-1 bd-highlight">
+                        <h6>Subtotal</h6>
+                    </div>
+                    <div class="pt-3 bd-highlight">
+                        <h6 id="subtotal"></h6>
+                    </div>
+                </div>
+
+                <div class="d-flex bd-highlight bg-light p-3">
+                    <div class="pt-3 flex-grow-1 bd-highlight">
+                        <h6>GST</h6>
+                    </div>
+                    <div class="pt-3 bd-highlight">
+                        <h6 id="gst"></h6>
+                    </div>
+                </div>
+
+                <div class="d-flex bd-highlight bg-light p-3">
+                    <div class="pt-3 flex-grow-1 bd-highlight">
+                        <h6>Total</h6>
+                    </div>
+                    <div class="pt-3 bd-highlight">
+                        <h5 id="total" style="color: green;"></h5>
+                    </div>
+                </div>
+
+                <div class="bg-light p-4 mt-3">
+                    <input type="radio" class="" id="huey" name="drone" value="huey" checked>
+                    <label for="huey">
+                        <h6>Pay with UPI QR Code</h6>
+                    </label>
+                </div>
+
+                <div class="p-2">
+                    <p>Your personal data will be used to process your order, support your experience throughout
+                        this website, and for other purposes described in our privacy policy.</p>
+                </div>
+
+                <div class="p-2">
+                    <div class="debit_cart bg-light p-4">
+
+                        <div class="mb-3">
+                            <!-- <label for="exampleInputEmail1" class="form-label">Enter Card Number</label> -->
+                            <input placeholder="Card Number" type="text" maxlength="12" minlength="12"
+                                class="form-control" id="card_number" aria-describedby="emailHelp">
+                            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                        </div>
+                        <div class="mb-3">
+                            <select class="p-1 border w-25" name="Month">
+                                <option value="january">January</option>
+                                <option value="february">February</option>
+                                <option value="march">March</option>
+                                <option value="april">April</option>
+                                <option value="may">May</option>
+                                <option value="june">June</option>
+                                <option value="july">July</option>
+                                <option value="august">August</option>
+                                <option value="september">September</option>
+                                <option value="october">October</option>
+                                <option value="november">November</option>
+                                <option value="december">December</option>
+                            </select>
+                            <select class="p-1 border w-25" name="Year">
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                            </select>
+                            <input type="text" minlength="4" maxlength="4" placeholder="CVV" class="mt-3 form-control w-25" id="cvv">
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <button id="otp" class="btn btn-success border">SEND OTP</button>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" class="form-control border" style="height: 40px;" id="inotp"
+                                    placeholder="ENTER OTP">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button id="order" class="d-grid btn btn-success btn-lg" type="button">PLACE ORDER</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Footer-1 -->
+<section>
+    <div class="container my-5">
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-6 mb-3 text_color">
+                Bigbasket<br>
+                <a href="aboutus.html">About Us</a><br>
+                <a href="aboutus.html">In News</a><br>
+                <a href="aboutus.html">Green bigbasket</a><br>
+                <a href="aboutus.html">Privacy Policy</a><br>
+                <a href="aboutus.html">Affiliate</a><br>
+                <a href="aboutus.html">Terms and Conditions</a><br>
+                <a href="aboutus.html">Careers At bigbasket</a><br>
+                <a href="aboutus.html">bb Instant</a><br>
+                <a href="aboutus.html">bb Daily</a><br>
+                <a href="aboutus.html">bb Blog</a><br>
+                <a href="aboutus.html">bbnow</a>
+              </div>
+              <div class="col-lg-3 col-6 mb-3 text_color">
+                Help<br>
+                <a href="aboutus.html">FAQs</a><br>
+                <a href="aboutus.html">Contact Us</a><br>
+                <a href="aboutus.html">bb Wallet FAQs</a><br>
+                <a href="aboutus.html">bb Wallet T&Cs</a><br>
+                <a href="aboutus.html">Vendor Connect</a><br>
+              </div>
+              <div class="col-lg-3 col-6 mb-3 text_color">
+                <p>Download Our App</p>
+                <img src="https://www.bbassets.com/static/v2530/custPage/build/content/img/Google-App-store-icon.png" alt="">
+                <img src="https://www.bbassets.com/static/v2530/custPage/build/content/img/Apple-App-store-icon.png" alt="">
+              </div>
+              <div class="col-lg-3 col-6 mb-3">
+                <p class="text_color">Get Social With Us</p>
+                <i class="bi bi-facebook Footer-1-icon"></i>
+                <i class="bi bi-instagram Footer-1-icon"></i>
+                <i class="bi bi-pinterest Footer-1-icon"></i>
+                <i class="bi bi-twitter Footer-1-icon"></i>
+              </div>
+            </div>
+          </div>
+        <hr>
+    </div>
+</section>
+
+<!-- Footer-2 -->
+<section>
+    <div class="container my-5">
+        <div class="row">
+          <div class="col-2">
+            <p class="text_color">POPULAR CATEGORIES:</p>
+          </div>
+          <div class="col-10 text_small">
+            Sunflower Oils, Wheat Atta, Ghee, Milk, Health Drinks, Flakes, Organic F&V, Namkeen, Eggs, Floor Cleaners, Other Juices, Leafy Vegetables, Frozen Veg Food, Diapers & Wipes,
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+              <p class="text_color">POPULAR BRANDS:</p>
+            </div>
+            <div class="col-10 text_small">
+                Amul, Nescafe , MTR, Red Bull, elite cake, Pediasure, Yummiez, Yera, Yakult, Britannia, Wow Momo, Fortune , Haldirams , Ferrero, Lays, Patanjali, McCain, kwality walls, Cadbury Dairy Milk, Pedigree,                </div>
+          </div>
+
+          <div class="row">
+            <div class="col-2">
+              <p class="text_color">CITIES WE SERVE:</p>
+            </div>
+            <div class="col-10 text_small">
+                Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Mysore, Madurai, Coimbatore, Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Nashik, Lucknow-Kanpur, Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore, Chandigarh Tricity, Jaipur, Bhopal, Noida-Ghaziabad, Kochi, Krishna District, Bhubaneshwar-Cuttack, Guwahati, Renigunta, Hubli, Davanagere, Trichy, Amaravathi, Raipur, Rajkot, Gwalior, Bareilly, Allahabad, Hyderabad Rural, Bangalore Rural, Chennai Rural, Vizag Rural, Lucknow Rural, Noida Rural, Ahmedabad Rural, Bhopal Rural, Bhubaneswar Rural, Coimbatore Rural, Chandigarh Rural, Gurugram Rural, Guwahati Rural, Indore Rural, Kochi Rural, Kolkata Rural, Mumbai Rural, Mysore Rural, Nagpur Rural, Patna Rural, Pune Rural, Surat Rural, Vadodara Rural, Jaipur Rural, 
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-2">
+              <p class="text_color">PAYMENT OPTIONS:</p>
+            </div>
+            <div class="col-10">
+                  CASH ON DELIVERY
+            </div>
+          </div>
+
+      </div>
+</section>
+
+<!-- Footer-3 -->
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+          <div class="col">
+              <small>
+                Copyright © 2021-2023 Supermarket Grocery Supplies Pvt Ltd
+              </small>
+            
+          </div>
+        </div>
+      </div>
+</section>
+
+
+
+
+
+<!-- <h1>Hello, world!</h1> -->
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+-->
+<!-- <script src="cart.js"></script> -->
+<!-- <script src="data.js"></script> -->
+<script src="index.js"></script>
+
+
+
+    <!-- </div> -->
+    <!-- </div> -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script> -->
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
+<script>
+    var sum = 0;
+    var data = JSON.parse(localStorage.getItem("Cart")) || [];
+    console.log(data)
+    data.map(function (el, index) {
+
+        sum = sum + Math.ceil(el.price * el.quant);
+        var p1 = document.createElement("p");
+        p1.innerHTML = el.proName + " x " +"<b>"+ el.quant+"<b>";
+        // p1.style.fontWeight="bold"
+
+        var p2 = document.createElement("p");
+        p2.innerText = "₹ " +Math.ceil( el.price * el.quant);
+
+        document.querySelector("#Product_Name").append(p1)
+        document.querySelector("#pp").append(p2)
+
+    });
+
+    document.querySelector("#subtotal").innerText = "₹ " + sum;
+
+    var gst = (sum * 18) / 100;
+    document.querySelector("#gst").innerHTML = "₹ " + Math.ceil(gst);
+
+    document.querySelector("#total").innerText = "₹ " + Math.round(sum + gst);
+
+    document.querySelector("#order").addEventListener("click", order)
+
+
+    document.querySelector("#otp").addEventListener("click", send_otp)
+
+    function send_otp() {
+        var cn = document.querySelector("#card_number").value
+        var cvv = document.querySelector("#cvv").value
+        if (cn.length == 12 && cvv.length == 4) {
+            swal({
+                title: "OTP has been sent",
+                text: "You OTP is 1234",
+                icon: "success",
+                button: "Got it!",
+            });
+
+        }else{
+            swal({
+                title: "Oops Sorry,Please try agin!",
+                text: "Your information is incorrect  ",
+                icon: "error",
+                button: "Got It",
+            });
+        }
+    }
+
+
+    function order() {
+        event.preventDefault()
+        console.log("")
+        var otp = document.querySelector("#inotp").value
+        if (otp == "1234") {
+            console.log("hi")
+            swal({
+                title: "Your order is place!",
+                text: "Thank you for shopping with us!",
+                icon: "success",
+                button: "Thank you!",
+            });
+            localStorage.removeItem("Cart")
+            setInterval(function () {window.location.reload()}, 5000);
+            // localStorage.clear()
+        } else {
+            swal({
+                text: "Your order is not place!",
+                title: "Your payment failed!",
+                icon: "error",
+                button: "Oops!",
+            });
+        }
+    }
+    setInterval(function () {window.location.href="index.html"}, 10000);
+
+
+
+
+
+</script>
